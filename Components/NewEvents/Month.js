@@ -1,6 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import "./Style.css";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Month({
   month,
@@ -10,22 +12,36 @@ export default function Month({
   events,
   curYear,
 }) {
+  const router = useRouter();
   // console.log("month ",month);
-  //   console.log(events);
+  // console.log(events);
   const [dateInMonth, setdateInMonth] = useState([]);
 
   useEffect(() => {
+    // console.log("month",events);
     if (events.length > 0 && events[0].year === curYear) {
-      const marked = events[0].events.filter((ele) => {
-        return ele.monthName.trim() === month.name;
+      const marked = events[0].months.filter((ele) => {
+        return ele.name.trim() === month.name;
       });
+      // console.log("marked",marked);
       if (marked.length > 0) {
-        setdateInMonth(marked[0].eventPointers);
+        const dates = marked[0].events.map((event) => event.date);
+        setdateInMonth(dates);
+        // console.log("marked", dates);
       }
     } else {
       setdateInMonth([]);
     }
   }, [events]);
+  const [address, setAddress] = useState("");
+
+  const goToEvent = (e) => {
+    router.push(
+      `/Event?date=${
+        e.target.innerText
+      }&month=${e.target.parentNode.parentNode.parentNode.firstChild.innerText.trim()}&year=${curYear}`
+    );
+  };
   return (
     <>
       {dateInMonth.length > 0 ? (
@@ -73,8 +89,15 @@ export default function Month({
                       dateInMonth.includes(day + 1) ? "markedDates" : ""
                     }`}
                     key={day + 1}
+                    // onClick={handleLinkClick}
                   >
-                    {day + 1}
+                    <span
+                      onClick={goToEvent}
+                      // href={address}
+                      // {`/Event?date=${e.target.innerText}&month=${e.target.parentNode.parentNode.firstChild.innerText.trim()}&year=${curYear}`}
+                    >
+                      {day + 1}
+                    </span>
                   </div>
                 ))}
               </div>

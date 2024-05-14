@@ -9,7 +9,7 @@ const Item = () => {
     <div className="dabba">
       <div
         className="md:flex hidden flex-col relative md:pb-0 pb-10 -mt-24 lg:-mt-0 "
-        style={{ background: "black", color: "white" }}
+        style={{ color: "white" }}
       >
         <div className="flex  w-0 font-[Archivo] sm:text-4xl text-lg font-extrabold [-webkit-text-stroke:2px_#ffffff80] text-transparent">
           <h1 className="rotate-90 absolute sm:top-[19vw] sm:-left-60 -left-32 top-[180px] tracking-[4px]">

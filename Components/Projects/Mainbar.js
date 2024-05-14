@@ -50,20 +50,20 @@ const Mainbar = () => {
 
   return (
     
-    <div className="md:min-h-dvh h-screen w-full flex flex-col items-center justify-start text-white gap-2 border">
+    <div className="md:min-h-dvh md:h-screen w-full flex flex-col items-center justify-start text-white gap-2">
     {project.length !==0 && (
       <>
-      <div className=" w-3/5 aspect-square mt-4 overflow-hidden border">
+      <div className=" w-full h-fit text-center uppercase font-[Archivo] font-bold text-2xl mt-4">
+        {project[`${page}`].title}
+      </div>
+      <div className=" w-3/5 aspect-square mt-3 overflow-hidden">
         <img
           src={urlFor(project[`${page}`].image).width(800).url()}
           alt=""
           className=" h-full w-full object-center object-contain"
         />
       </div>
-      <div className=" w-full h-fit text-center uppercase font-[Archivo] font-bold text-2xl mt-3">
-        {project[`${page}`].title}
-      </div>
-      <div className=" w-4/5 h-fit text-justify text-sm">
+      <div className=" md:w-4/5 h-[39vh] text-left md:text-justify text-sm px-6 md:p-2 rounded overflow-scroll border">
         {project[`${page}`].description}
       </div>
       <div className=" w-full flex items-center justify-between rounded-xl mt-auto mb-8">
