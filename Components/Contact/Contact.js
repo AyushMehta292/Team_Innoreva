@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { client } from "@/Helper/context";
 const Contact = () => {
+  const [countMessage, setCountMessage] = useState('0')
   const [formData, setFormData] = useState({
-    _id: "contact_us",
+    _id: '0',
     _type: "contact_us",
     name: "",
     email: "",
@@ -12,6 +13,8 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
+    setFormData({ ...formData, _id: String(Number(countMessage)+1) });
+    setCountMessage(String(Number(countMessage)+1))
     client.createOrReplace(formData).then((res) => {
       console.log(`Bike was created, document ID is ${res._id}`);
     });
@@ -32,7 +35,7 @@ const Contact = () => {
               Contact us
             </div>
             <div className="mt-5 text-justify pr-3">
-              If you have any questions related to our club or work or
+              If you have any questions related to our club or work, or
               experiencing any technical difficulties, please do not hesitate to
               contact us.
             </div>

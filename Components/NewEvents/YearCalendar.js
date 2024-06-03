@@ -6,9 +6,9 @@ import Month from "./Month";
 import "./Style.css";
 import { set } from "date-fns";
 
-const YearCalendar = () => {
+const YearCalendar2 = () => {
   const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const [curYear, setCurYear] = useState(String(new Date().getFullYear()-1));
+  const [curYear, setCurYear] = useState((new Date().getFullYear()-1));
   const months = [
     { name: "January", days: 31 },
     { name: "February", days: (curYear % 4 === 0)?29:28 },
@@ -24,13 +24,14 @@ const YearCalendar = () => {
     { name: "December", days: 31 },
   ];
   const [EventsContext, setEventsContext] = useState([]);
-  
   useEffect(() => {
-    client.fetch('*[_type == "events"]').then((res) => {
+    client.fetch('*[_type == "newEvents"]').then((res) => {
+      // console.log("array ",res);
       const events = res;
       setEventsContext(events);
     });
-  }, []);
+  }, [])
+
   const [markedDates, setMarkedDates] = useState([]);
   useEffect(() => {
     if (curYear % 4 === 0) {
@@ -42,12 +43,19 @@ const YearCalendar = () => {
     return new Date(year, month, 1).getDay();
   };
   const handleLeft = () => {
-    setCurYear(String(Number(curYear) - 1));
+    setCurYear((curYear) - 1);
   };
   const handleRight = () => {
-    setCurYear(String(Number(curYear) + 1));
+    setCurYear((curYear) + 1);
   };
 
+  // useEffect(() => {
+  //   const dummy=EventsContext.filter((event) => {
+  //     return event.year === curYear})
+  //   console.log(EventsContext,"dummy",EventsContext.filter((event) => {
+  //     return event.year === curYear}));
+  // }, [EventsContext])
+  
   return (
     <div className="newdiv flex flex-col items-center justify-center  ">
       <div className="flex  mt-2 items-center justify-center  ">
@@ -79,7 +87,9 @@ const YearCalendar = () => {
               emptyPlaceholders={emptyPlaceholders}
               markedDates={markedDates}
               setMarkedDates={setMarkedDates}
-              events={EventsContext.filter((event) => event.year === "2023")}
+              events={EventsContext.filter((event) => {
+                // console.log(event," yearcal", curYear);
+                return event.year === curYear})}
             />
             // <div className="parent-calendar-month" key={index}>
             //   <div className="calendar-month">
@@ -111,4 +121,4 @@ const YearCalendar = () => {
   );
 };
 
-export default YearCalendar;
+export default YearCalendar2;

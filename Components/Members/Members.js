@@ -31,10 +31,10 @@ const Members = () => {
   return (
     <>
       <Carousel
-        className="self-center md:mt-auto md:mb-12 w-[80%] mt-8"
+        className="self-center md:mt-auto md:mb-auto w-[85%] mt-8"
         opts={{
           align: "start",
-          loop: true,
+          // loop: true,
           // active: false,
           // axis: 'y',
           duration: 25,
@@ -45,20 +45,21 @@ const Members = () => {
           {membersData &&
             membersData.map((data, idx) => (
               <CarouselItem
-                key={data.por}
+                key={idx}
                 className="md:basis-1/3 lg:basis-1/4 basis-1/2"
               >
                 <div className="p-1">
                   <Card>
                     <CardContent className="flex flex-col aspect-[1/1.7] items-center justify-start p-1">
                       <div className=" border w-full h-[70%] rounded-lg overflow-hidden">
+                        {membersData[`${data.id - 1}`].image && 
                         <img
                           src={urlFor(membersData[`${data.id - 1}`].image)
                             .width(400)
                             .url()}
                           alt=""
                           className="object-contain w-full"
-                        />
+                        />}
                       </div>
                       <div className=" font-bold text-[2.5vw] md:text-[1rem] text-nowrap overflow-hidden">
                         {data.name}
@@ -69,7 +70,7 @@ const Members = () => {
                       <a
                         href={data.linkedin}
                         className=" text-[2vw] md:text-2xl border p-1 rounded-lg no-underline
-                      hover:scale-[1.2] text-nowrap overflow-hidden"
+                      hover:scale-[1.2] text-nowrap overflow-hidden mt-auto mb-2"
                       >
                         <div className="">Know More</div>
                       </a>

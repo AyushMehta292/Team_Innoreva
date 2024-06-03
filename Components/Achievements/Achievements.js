@@ -42,7 +42,7 @@ const Achievements = () => {
                 </React.Fragment>
               );
             })}
-        <div className="hidden md:flex w-full items-center justify-between mt-auto">
+        <div className="hidden md:flex w-full items-center justify-between mt-auto ">
           <div className="w-fit text-nowrap font-bold text-2xl text-white pl-2">
             We have some more
           </div>
@@ -60,7 +60,7 @@ const Achievements = () => {
           </button>
         </div>
       </div>
-      <div className="md:hidden w-full flex items-center justify-between mt-auto mb-6">
+      <div className="md:hidden w-full flex items-center justify-between mt-auto mb-6 px-2">
         <div className="w-fit text-nowrap font-bold text-white pl-2">
           We have some more
         </div>
