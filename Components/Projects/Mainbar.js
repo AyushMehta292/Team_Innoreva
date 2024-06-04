@@ -26,7 +26,7 @@ const Mainbar = () => {
     }
   }, [page, project]);
   useEffect(() => {
-    client.fetch('*[_type == "projects"]').then((data) => {
+    client.fetch('*[_type == "newProjects"]').then((data) => {
       const project = data;
       project.sort((a, b) => a.id - b.id);
       setProject(project);
