@@ -39,9 +39,6 @@ const Item = () => {
             <GalleryCard />
           </div>
         </div>
-        <h2 className="one">
-          <img  alt="" />
-        </h2>
         <div className="drag absolute top-1/3 -right-2 text-sm  rotate-90">
             <p>DRAG FOR MORE</p>
             <div className=' absolute -rotate-90 right-8 top-6 text-sm '>
@@ -86,9 +83,6 @@ const Item = () => {
             <GalleryCard />
           </div>
         </div>
-        <h2 className="one">
-          <img alt="" />
-        </h2>
         <div className="flex text-sm justify-center items-center">
             <p>DRAG FOR MORE</p>
             <div className=' text-sm ml-10'>
