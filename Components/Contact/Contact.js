@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+'use client'
+import React, { useState, useEffect } from "react";
+import { toast, ToastContainer, css } from "react-toastify";
 import { client } from "@/Helper/context";
+import 'react-toastify/dist/ReactToastify.css';
+
 const Contact = () => {
-  const [countMessage, setCountMessage] = useState('0')
+  const [countMessage, setCountMessage] = useState('0');
   const [formData, setFormData] = useState({
     _id: '0',
     _type: "contact_us",
@@ -10,14 +14,34 @@ const Contact = () => {
     message: "",
   });
 
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    setFormData({ ...formData, _id: String(Number(countMessage)+1) });
-    setCountMessage(String(Number(countMessage)+1))
+    if (!formData.name || !formData.email || !formData.message) {
+      toast.error("Please fill in all fields", {
+        style: { backgroundColor: 'red', color: 'white' }
+      });
+      return;
+    }
+
+    setFormData({ ...formData, _id: String(Number(countMessage) + 1) });
+    setCountMessage(String(Number(countMessage) + 1));
+
     client.createOrReplace(formData).then((res) => {
-      console.log(`Bike was created, document ID is ${res._id}`);
+      console.log(`Contact message was created, document ID is ${res._id}`);
+      // Show success toast notification
+      toast.success("Form submitted successfully!", {
+        style: { backgroundColor: 'green', color: 'white' }
+      });
+    }).catch((error) => {
+      console.error("Error creating document:", error);
+      // Show error toast notification
+      toast.error("Form submission failed. Please try again.", {
+        style: { backgroundColor: 'red', color: 'white' }
+      });
     });
+
     setFormData({
       _id: "contact_us",
       _type: "contact_us",
@@ -25,6 +49,11 @@ const Contact = () => {
       email: "",
       message: "",
     });
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
   return (
     <>
