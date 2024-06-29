@@ -32,7 +32,7 @@ export default function Home() {
       <Hero />
 
       {/* About Us */}
-      <div className="flex flex-col md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16">
+      <div id='About' className="flex flex-col md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16">
         <Sidebar word="ABOUT   US" />
         <div className="flex flex-col justify-between p-4 sm:p-6 md:p-8 lg:p-10  w-full">
           <div className="mb-6 mt-12 text-[1.5rem] font-semibold text-white  lg:text-[2rem] text-left">
@@ -64,7 +64,7 @@ export default function Home() {
       </div>
 
       {/* Members */}
-      <div className="flex flex-col md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16">
+      <div id='Members' className="flex flex-col md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16">
         <Sidebar word="Members" />
         <div className="flex flex-col w-full md:min-h-dvh px-10 md:px-0 items-start justify-center md:justify-start overflow-hidden">
           <div className=" w-full">
@@ -85,19 +85,19 @@ export default function Home() {
 
       {/* Projects */}
 
-      <div className="flex flex-col md:h-screen md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16 ">
+      <div id='Projects' className="flex flex-col md:h-screen md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16 ">
         <Sidebar word="Projects" />
         <Mainbar />
       </div>
 
       {/* Achievements */}
-      <div className=" flex flex-col md:flex-row min-h-screen items-center justify-start w-screen md:gap-16">
+      <div id='Achievements' className=" flex flex-col md:flex-row min-h-screen items-center justify-start w-screen md:gap-16">
         <Sidebar word="Achievements" />
         <Achievements />
       </div>
 
       {/* Events */}
-        <div className=" flex flex-col md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16">
+        <div id='Events' className=" flex flex-col md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16">
           <Sidebar word="Events" />
           <YearCalendar2 />
         </div>
@@ -107,13 +107,13 @@ export default function Home() {
       </div> */}
 
       {/* Alumni */}
-      <div className="flex flex-col mt-4 md:mt-0 md:h-screen md:min-h-screen md:flex-row items-center justify-start w-screen ">
+      <div id='Alumni' className="flex flex-col mt-4 md:mt-0 md:h-screen md:min-h-screen md:flex-row items-center justify-start w-screen ">
         <Sidebar word="Alumni" />
         <Alumni />
       </div>
 
       {/* Gallery */}
-      <div className="flex flex-col md:flex-row min-h-screen items-center justify-start w-screen ">
+      <div id='Gallery' className="flex flex-col md:flex-row min-h-screen items-center justify-start w-screen ">
         <div className="hidden md:block">
           <Sidebar word="Gallery" />
         </div>
@@ -124,7 +124,7 @@ export default function Home() {
       </div>
 
       {/* Contact Us */}
-      <div className=" flex flex-col min-h-screen items-center justify-start w-screen">
+      <div id='Contacts' className=" flex flex-col min-h-screen items-center justify-start w-screen">
         {/* <div className="hidden md:block">
           <Sidebar word="Contact us" />
           </div>
