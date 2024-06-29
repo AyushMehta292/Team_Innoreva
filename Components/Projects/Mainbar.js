@@ -24,11 +24,14 @@ const Mainbar = () => {
   }, [page, project]);
 
   useEffect(() => {
-    client.fetch('*[_type == "projects"]').then((data) => {
-      const projectData = data;
-      projectData.sort((a, b) => a.id - b.id);
-      setProject(projectData);
-    });
+
+    client.fetch('*[_type == "newProjects"]').then((data) => {
+      const project = data;
+      project.sort((a, b) => a.id - b.id);
+      setProject(project);
+    }
+    );
+
   }, []);
 
   useEffect(() => {

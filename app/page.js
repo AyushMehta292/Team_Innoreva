@@ -23,6 +23,8 @@ import Contact from "@/Components/Contact/Contact";
 
 import YearCalendar2 from "@/Components/NewEvents/YearCalendar";
 
+import { ToastContainer } from "react-toastify";
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between bg-[#000016] overflow-hidden">
@@ -133,6 +135,7 @@ export default function Home() {
         </div> */}
         <div className="md:flex-row min-h-screen items-center justify-start w-screen">
           <Contact />
+          <ToastContainer/>
         </div>
         <footer className=" w-full">
           <p className="font-light text-white  text-center pt-5 pb-2">
