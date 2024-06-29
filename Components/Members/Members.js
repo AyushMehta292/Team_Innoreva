@@ -18,12 +18,10 @@ const Members = () => {
     client.fetch('*[_type == "members"]').then((res) => {
       const data = res;
       data.sort((a, b) => a.id - b.id);
-      // console.log("response ", data);
       setmembersData(data);
     });
   }, []);
 
-  // console.log("sortedData ", membersData);
   function urlFor(source) {
     return builder.image(source);
   }
@@ -34,11 +32,7 @@ const Members = () => {
         className="self-center md:mt-auto md:mb-auto w-[85%] mt-8"
         opts={{
           align: "start",
-          // loop: true,
-          // active: false,
-          // axis: 'y',
           duration: 25,
-          
         }}
       >
         <CarouselContent>
@@ -51,17 +45,18 @@ const Members = () => {
                 <div className="p-1">
                   <Card>
                     <CardContent className="flex flex-col aspect-[1/1.7] items-center justify-start p-1">
-                      <div className=" border w-full h-[70%] rounded-lg overflow-hidden">
-                        {membersData[`${data.id - 1}`].image && 
-                        <img
-                          src={urlFor(membersData[`${data.id - 1}`].image)
-                            .width(400)
-                            .url()}
-                          alt=""
-                          className="object-contain w-full"
-                        />}
+                      <div className="border w-full h-[70%] rounded-lg overflow-hidden">
+                        {membersData[`${data.id - 1}`].image && (
+                          <img
+                            src={urlFor(membersData[`${data.id - 1}`].image)
+                              .width(400)
+                              .url()}
+                            alt=""
+                            className="object-cover w-full h-full"
+                          />
+                        )}
                       </div>
-                      <div className=" font-bold text-[2.5vw] md:text-[1rem] text-nowrap overflow-hidden">
+                      <div className="font-bold text-[2.5vw] md:text-[1rem] text-nowrap overflow-hidden">
                         {data.name}
                       </div>
                       <div className="font-bold text-[3vw] md:text-[1.3rem] text-slate-400 text-nowrap overflow-hidden">
@@ -69,8 +64,8 @@ const Members = () => {
                       </div>
                       <a
                         href={data.linkedin}
-                        className=" text-[2vw] md:text-2xl border p-1 rounded-lg no-underline
-                      hover:scale-[1.2] text-nowrap overflow-hidden mt-auto mb-2"
+                        className="text-[2vw] md:text-2xl border p-1 rounded-lg no-underline
+                        hover:scale-105 hover:bg-[#000016] hover:text-white text-nowrap overflow-hidden mt-auto mb-2 transition-transform duration-200 ease-in-out"
                       >
                         <div className="">Know More</div>
                       </a>
